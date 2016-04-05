@@ -32,6 +32,7 @@ class consul::install {
         url          => $consul::real_download_url,
         target       => "${install_path}/consul-${consul::version}",
         checksum     => false,
+        extension    => 'zip',
       }->
       file {
         "${install_path}/consul-${consul::version}/consul":
