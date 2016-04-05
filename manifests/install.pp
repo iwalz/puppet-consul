@@ -32,7 +32,7 @@ class consul::install {
         url          => $consul::real_download_url,
         target       => "${install_path}/consul-${consul::version}",
         checksum     => false,
-        extension    => ${consul::download_extension},
+        extension    => $consul::download_extension,
       }->
       file {
         "${install_path}/consul-${consul::version}/consul":
