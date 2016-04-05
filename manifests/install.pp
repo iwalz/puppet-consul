@@ -27,12 +27,12 @@ class consul::install {
         "${install_path}/consul-${consul::version}"]:
         ensure => directory,
       }->
-      archive { "${install_path}/consul-${consul::version}.${consul::download_extension}":
+      archive { "consul-${consul::version}":
         ensure       => present,
         url          => $consul::real_download_url,
         target       => "${install_path}/consul-${consul::version}",
         checksum     => false,
-        extension    => 'zip',
+        extension    => ${consul::download_extension},
       }->
       file {
         "${install_path}/consul-${consul::version}/consul":
