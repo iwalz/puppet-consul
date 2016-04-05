@@ -22,7 +22,6 @@ class consul::install {
         $do_notify_service = $consul::notify_service
       }
 
-      include '::archive'
       file { [
         $install_path,
         "${install_path}/consul-${consul::version}"]:
