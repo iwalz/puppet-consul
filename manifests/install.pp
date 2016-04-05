@@ -31,6 +31,7 @@ class consul::install {
         ensure       => present,
         url          => $consul::real_download_url,
         target       => "${install_path}/consul-${consul::version}",
+        checksum     => false,
       }->
       file {
         "${install_path}/consul-${consul::version}/consul":
