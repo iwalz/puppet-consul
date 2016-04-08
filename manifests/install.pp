@@ -59,12 +59,12 @@ class consul::install {
         file { "${install_path}/consul-${consul::version}_web_ui":
           ensure => directory,
         }->
-        archive { "${install_path}/consul_web_ui-${consul::version}.zip":
+        archive { "consul_web_ui-${consul::version}":
           ensure       => present,
-          source       => $consul::real_ui_download_url,
-          extract      => true,
-          extract_path => "${install_path}/consul-${consul::version}_web_ui",
-          creates      => $archive_creates,
+          url          => $consul::real_ui_download_url,
+          target       => "${install_path}/consul-${consul::version}_web_ui",
+          checksum     => false,
+          extension    => $consul::download_extension,
         }->
         file { $consul::ui_dir:
           ensure => 'symlink',
